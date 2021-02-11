@@ -1,4 +1,4 @@
-import { fetchWithOutToken, fetchWithToken } from '../helpers/fetch'
+import * as HttpHelper from '../helpers/HttpHelper'
 import * as ActionTypes from '../store/ActionTypes'
 import * as ActionUtility from '../utils/ActionUtility'
 
@@ -12,7 +12,11 @@ export const logoutUser = () => {
 
 export const requestLogin = async (dispatch, values) => {
   try {
-    const resp = await fetchWithOutToken('auth/login', values, 'POST')
+    const resp = await HttpHelper.fetchWithOutToken(
+      'auth/login',
+      values,
+      'POST',
+    )
     const body = await resp.json()
     if (!body.ok) return body
     localStorage.setItem('token', body.token)
@@ -28,7 +32,7 @@ export const startChecking = async () => {
   const token = localStorage.getItem('token')
   if (!token) return null
   try {
-    const resp = await fetchWithToken('auth/renew')
+    const resp = await HttpHelper.fetchWithToken('auth/renew')
     const body = await resp.json()
     console.log('body:', body)
   } catch (error) {}

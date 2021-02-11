@@ -12,6 +12,7 @@ const dashboardRoot = `${homeRoot}dashboard`
 const dashboardRoutes = {
   Dashboard: {
     root: () => dashboardRoot,
+    exampleWithParams: (param = ':param') => `${dashboardRoot}/edit/${param}`,
   },
 }
 
