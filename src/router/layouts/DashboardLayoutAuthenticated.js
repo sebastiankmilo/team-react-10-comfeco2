@@ -1,14 +1,14 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import { DashboardScreen } from '../../components/dashboard/DashboardScreen'
+import { DashboardScreen } from '../../components/screens/dashboard/DashboardScreen'
 import { RouteMap } from '../../constants/RouteMap'
 import { withAuthentication } from '../../hoc/withAuthentication'
 
 const DashboardLayout = () => (
   <Switch>
     <Route exact path={RouteMap.Dashboard.root()} component={DashboardScreen} />
-    <Redirect to={RouteMap.Dashboard.root()} />
+    <Redirect to={RouteMap.Home.root()} />
   </Switch>
 )
 

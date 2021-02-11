@@ -1,8 +1,5 @@
 import React, { useReducer } from 'react'
 
-import 'antd/dist/antd.css'
-import './assets/styles/index.scss'
-
 import { AppRouter } from './router/AppRouter'
 import { AppContext } from './store/AppContext'
 import { appReducer, appInitialState } from './reducers/rootReducer'

@@ -1,7 +1,4 @@
-@import './layout.scss';
-@import './navbar.scss';
-@import './card.scss';
-@import './card.scss';
+@import './colors.scss';
 
 body {
   padding: 0;
@@ -9,3 +6,6 @@ body {
   // overflow-x: hidden;
   overflow-y: hidden;
 }
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import './layout.scss';
