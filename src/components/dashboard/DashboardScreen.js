@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HomeScreen = () => {
+export const DashboardScreen = () => {
   return (
     <div>
       <h1>HOME</h1>

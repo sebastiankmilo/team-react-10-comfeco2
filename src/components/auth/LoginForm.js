@@ -1,45 +1,46 @@
-import React, { useState, useContext } from "react";
-import { Card, Form, Input, Button, Spin } from "antd";
+import React, { useState, useContext } from 'react'
+import { Card, Form, Input, Button, Spin } from 'antd'
 
-import { AppContext } from "../../store/AppContext"; //flujo de datos
-import { useHistory } from "react-router-dom"; //enrutador
+import { AppContext } from '../../store/AppContext' //flujo de datos
+import { useHistory } from 'react-router-dom' //enrutador
 
-import { startLogin } from "../../actions/authActions";
+import { requestLogin } from '../../actions/AuthActions'
+import { RouteMap } from '../../constants/RouteMap'
 
 export const LoginForm = () => {
-  const [loading, setLoading] = useState(false);
-  const { dispatch } = useContext(AppContext);
+  const [loading, setLoading] = useState(false)
+  const { dispatch } = useContext(AppContext)
 
-  const history = useHistory();
-  
+  const history = useHistory()
+
   // onAlgo
   // handleAlgo
 
   const handleSubmit = async (values) => {
-    setLoading(true);
-    const {ok, msg} = await startLogin(dispatch, values);
-    
+    setLoading(true)
+    const { ok, msg } = await requestLogin(dispatch, values)
+
     if (!ok) {
       setLoading(false)
       console.log(msg)
-      if(msg === "Bad credentials") alert("Credenciales incorrectas")
+      if (msg === 'Bad credentials') alert('Credenciales incorrectas')
     }
-  };
+  }
 
   const handleRecovery = () => {
-    setLoading(true);
+    setLoading(true)
     setTimeout(() => {
-      history.push("/login/recovery");
-    }, 500);
-  };
+      history.push(RouteMap.Home.forgot())
+    }, 500)
+  }
 
-  if (loading) return <Spin />;
+  if (loading) return <Spin />
   return (
     <Card title="Inicio de sesión" hoverable className="card_title">
       <Form
         {...layout}
         onFinish={handleSubmit}
-        initialValues={{ email: "edgarolivar16@gmail.com", password: "123456" }}
+        initialValues={{ email: 'edgarolivar16@gmail.com', password: '123456' }}
         name="login"
       >
         <Form.Item
@@ -48,8 +49,8 @@ export const LoginForm = () => {
           rules={[
             {
               required: true,
-              type: "email",
-              message: "Por favor introduce tu email",
+              type: 'email',
+              message: 'Por favor introduce tu email',
             },
           ]}
         >
@@ -61,7 +62,7 @@ export const LoginForm = () => {
           rules={[
             {
               required: true,
-              message: "Por favor introduce tu contraseña",
+              message: 'Por favor introduce tu contraseña',
             },
           ]}
         >
@@ -77,8 +78,8 @@ export const LoginForm = () => {
         </Form.Item>
       </Form>
     </Card>
-  );
-};
+  )
+}
 
 const layout = {
   labelCol: {
@@ -87,10 +88,10 @@ const layout = {
   wrapperCol: {
     span: 16,
   },
-};
+}
 const tailLayout = {
   wrapperCol: {
     // offset: 4,
     span: 24,
   },
-};
+}
