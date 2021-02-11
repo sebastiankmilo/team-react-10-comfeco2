@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import { LoginForm } from "./LoginForm"; //componentes
+import { LoginForm } from './LoginForm' //componentes
 
 export const LoginScreen = () => {
-  return <LoginForm />;
-};
+  return <LoginForm />
+}
