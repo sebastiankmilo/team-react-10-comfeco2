@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import React, { useReducer } from 'react'
 
 import 'antd/dist/antd.css'
 import './assets/styles/index.scss'
