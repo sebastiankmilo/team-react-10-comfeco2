@@ -11,9 +11,10 @@ export const HeaderActionButton = ({ label, text, ...rest }) => (
       <Button
         outline
         color="primary"
+        data-testid="JqTayoZFEj-QA"
         id="id-button-header-action"
-        className="rounded-pill"
-        style={{ paddingLeft: '1.8rem', paddingRight: '1.8rem' }}
+        className="rounded-pill font-size-14"
+        style={{ paddingLeft: '1.8rem', paddingRight: '1.8rem', height: 40 }}
         {...rest}
       >
         {text}
