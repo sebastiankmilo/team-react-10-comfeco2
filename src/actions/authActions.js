@@ -22,10 +22,10 @@ export const requestLogin = (values) => {
       if (!body.ok) return body
       localStorage.setItem('token', body.token)
       dispatch(addUser(body))
-      return body
+      // TODO manejar el loading por medio de state
     } catch (error) {
       console.log('error:', error)
-      return false
+      // TODO añadir al state el error a manejar
     }
   }
 }
