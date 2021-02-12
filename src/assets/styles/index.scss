@@ -1,0 +1,11 @@
+@import './colors.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+  // overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import './layout.scss';
