@@ -7,7 +7,7 @@ import { useAppContext } from '../hooks'
 export const withAuthentication = (OriginalComponent) => {
   const UpdatedComponent = (props) => {
     const [redirect, setRedirect] = useState(false)
-    const [redirectUrl, setRedirectUrl] = useState(RouteMap.Home.root())
+    const [redirectUrl, setRedirectUrl] = useState(RouteMap.Home.login())
     const { state } = useAppContext()
     const { uid } = state.auth
 

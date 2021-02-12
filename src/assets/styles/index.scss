@@ -1,4 +1,7 @@
+$font-size-normal: 1.6rem;
+
 @import './colors.scss';
+@import './fonts.scss';
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import './layout.scss';
@@ -9,4 +12,8 @@ body {
   margin: 0;
   // overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.btn {
+  font-size: $font-size-normal;
 }
