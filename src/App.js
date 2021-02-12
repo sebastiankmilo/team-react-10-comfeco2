@@ -1,19 +1,25 @@
-import { useReducer } from "react";
+import React, { useReducer } from 'react'
 
-import "antd/dist/antd.css";
-import "./styles/index.scss";
-
-import { AppRouter } from "./router/AppRouter";
-import { AppContext } from "./store/AppContext";
-import { appReducer, appInitialState } from "./reducers/rootReducer";
+import { AppRouter } from './router/AppRouter'
+import { AppContext } from './store/AppContext'
+import { appReducer, appInitialState } from './reducers/rootReducer'
 
 function App() {
-  const [state, dispatch] = useReducer(appReducer, appInitialState);
+  const [state, dispatchAction] = useReducer(appReducer, appInitialState)
+
+  let dispatch = (action) => {
+    if (typeof action === 'function') {
+      action(dispatch, () => state)
+    } else {
+      dispatchAction(action)
+    }
+  }
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      <AppRouter/>
+      <AppRouter />
     </AppContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App

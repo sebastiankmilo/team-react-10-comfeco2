@@ -1,0 +1,19 @@
+.header-layout {
+  grid-area: header;
+}
+
+.content-layout {
+  grid-area: main;
+}
+
+.footer-layout {
+  grid-area: footer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template:
+    'header' auto
+    'main' 4fr
+    'footer' 1fr;
+}
