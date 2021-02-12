@@ -5,7 +5,16 @@ import { AppContext } from './store/AppContext'
 import { appReducer, appInitialState } from './reducers/rootReducer'
 
 function App() {
-  const [state, dispatch] = useReducer(appReducer, appInitialState)
+  const [state, dispatchAction] = useReducer(appReducer, appInitialState)
+
+  let dispatch = (action) => {
+    if (typeof action === 'function') {
+      action(dispatch, () => state)
+    } else {
+      dispatchAction(action)
+    }
+  }
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <AppRouter />

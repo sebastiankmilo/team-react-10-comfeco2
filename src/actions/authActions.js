@@ -10,30 +10,34 @@ export const logoutUser = () => {
   return ActionUtility.createAction(ActionTypes.LOGOUT_USER)
 }
 
-export const requestLogin = async (dispatch, values) => {
-  try {
-    const resp = await HttpHelper.fetchWithOutToken(
-      'auth/login',
-      values,
-      'POST',
-    )
-    const body = await resp.json()
-    if (!body.ok) return body
-    localStorage.setItem('token', body.token)
-    dispatch(addUser(body))
-    return body
-  } catch (error) {
-    console.log('error:', error)
-    return false
+export const requestLogin = (values) => {
+  return async (dispatch, getState) => {
+    try {
+      const resp = await HttpHelper.fetchWithOutToken(
+        'auth/login',
+        values,
+        'POST',
+      )
+      const body = await resp.json()
+      if (!body.ok) return body
+      localStorage.setItem('token', body.token)
+      dispatch(addUser(body))
+      return body
+    } catch (error) {
+      console.log('error:', error)
+      return false
+    }
   }
 }
 
 export const startChecking = async () => {
-  const token = localStorage.getItem('token')
-  if (!token) return null
-  try {
-    const resp = await HttpHelper.fetchWithToken('auth/renew')
-    const body = await resp.json()
-    console.log('body:', body)
-  } catch (error) {}
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem('token')
+    if (!token) return null
+    try {
+      const resp = await HttpHelper.fetchWithToken('auth/renew')
+      const body = await resp.json()
+      console.log('body:', body)
+    } catch (error) {}
+  }
 }
