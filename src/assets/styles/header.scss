@@ -1,0 +1,11 @@
+.boder-bottom-line {
+  border-bottom: 10px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    #5d2c8f 0%,
+    #8a178c 32.81%,
+    #c36e42 67.71%,
+    #ffbe1a 100%
+  );
+}
