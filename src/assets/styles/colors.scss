@@ -4,3 +4,15 @@ $warning: #ffbe1a;
 $dark: #756585;
 
 $body-bg: #ffff;
+
+$gradient-comfeco: linear-gradient(
+  to right,
+  #5d2c8f 0%,
+  #8a178c 32.81%,
+  #c36e42 67.71%,
+  #ffbe1a 100%
+);
+
+.color-purple-text {
+  color: #a48dba;
+}
