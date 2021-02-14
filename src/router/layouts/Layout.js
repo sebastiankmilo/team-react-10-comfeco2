@@ -6,9 +6,10 @@ import { Header } from '../../components/ui/header/Header'
 import { Footer } from '../../components/ui/footer/Footer'
 import { Content } from '../../components/ui/content/Content'
 import { DashboardLayoutAuthenticated } from './DashboardLayoutAuthenticated'
+import { RegisterScreen } from '../../components/screens/auth/RegisterScreen'
 
 export const Layout = () => (
-  <>
+  <div className="app layout">
     <Header />
     <Content>
       <Switch>
@@ -20,11 +21,11 @@ export const Layout = () => (
         <Route
           exact
           path={RouteMap.Home.register()}
-          component={() => <h1>register</h1>}
+          component={RegisterScreen}
         />
         <Route component={DashboardLayoutAuthenticated} />
       </Switch>
     </Content>
     <Footer />
-  </>
+  </div>
 )

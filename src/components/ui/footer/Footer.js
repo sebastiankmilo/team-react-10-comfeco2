@@ -5,8 +5,8 @@ import { Flex } from '../common/Flex'
 import { FooterSocialLink } from './FooterSocialLink'
 
 export const Footer = () => (
-  <footer className="footer fixed-bottom p-4">
-    <Container className="h-100">
+  <footer className="footer">
+    <Container className="h-100 p-4">
       <Row className="h-100">
         <Flex
           tag={Col}
