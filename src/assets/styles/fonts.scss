@@ -6,8 +6,9 @@ $font-size-base: 1rem;
 $line-height-base: 1.5;
 
 p,
-label {
-  font-size: $font-size-normal;
+label,
+input {
+  font-size: $font-size-normal !important;
 }
 
 @font-face {
