@@ -25,7 +25,11 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.16",
+    "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.9",
+    "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -35,8 +39,9 @@
     "pretty-quick": "^2.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env CLIENT_ENV=development craco start",
+    "prod": "cross-env CLIENT_ENV=production craco start",
+    "build": "cross-env CLIENT_ENV=production craco start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
