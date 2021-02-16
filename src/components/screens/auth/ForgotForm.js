@@ -8,7 +8,6 @@ import {
   CardText,
   Form,
   CardTitle,
-  FormGroup,
   Col,
 } from 'reactstrap'
 import { InputText } from '../../ui/inputs/InputText'
