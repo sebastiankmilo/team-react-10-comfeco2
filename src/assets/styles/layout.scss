@@ -1,3 +1,29 @@
-p {
-  margin-bottom: 0;
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
+.layout {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template:
+    'header' 1fr
+    'content' 8fr
+    'footer' 1fr;
+}
+
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
+  grid-template-rows: auto;
+  height: 1fr;
+}
+
+.content {
+  grid-area: content;
 }
