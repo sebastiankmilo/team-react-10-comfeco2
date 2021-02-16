@@ -1,6 +1,6 @@
 import environment from './base'
 
-const baseApi = 'http://localhost:8080'
+const baseApi = 'https://comfeco-team-react-10-backend.herokuapp.com'
 const env = environment(baseApi)
 
 const developmentEnv = {

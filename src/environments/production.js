@@ -5,7 +5,7 @@ import environment from './base'
  * You shouldn't have override anything.
  */
 
-const baseApi = 'http://api-production'
+const baseApi = 'https://comfeco-team-react-10-backend.herokuapp.com'
 const env = environment(baseApi)
 
 const productionEnv = {
