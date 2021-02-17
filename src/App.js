@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import environment from 'environment'
 
 import { AppRouter } from './router/AppRouter'
 import { AppContext } from './store/AppContext'
@@ -15,8 +14,6 @@ function App() {
       dispatchAction(action)
     }
   }
-  console.log(environment)
-
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <AppRouter />

@@ -10,8 +10,6 @@ export const withAuthentication = (OriginalComponent) => {
     const [redirectUrl, setRedirectUrl] = useState(RouteMap.Home.login())
     const [auth] = useAuthReducer()
     const { uid } = auth
-
-    console.log(uid)
     if (!uid || redirect) {
       return <Redirect to={redirectUrl} />
     }

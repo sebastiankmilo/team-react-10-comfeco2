@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Layout } from './layouts/Layout'
 
 export const AppRouter = () => (
-  <Router>
+  <Router fallback={<span />}>
     <Layout />
   </Router>
 )

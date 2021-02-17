@@ -8,7 +8,7 @@ export const initialState = {
 export const authReducer = (state, action) => {
   switch (action.type) {
     case ActionTypes.ADD_AUTH:
-      return { ...state, ...action.payload }
+      return { ...initialState, ...action.payload }
     case ActionTypes.LOGOUT_AUTH:
       return { ...initialState }
     case ActionTypes.REQUESTING_AUTH:
@@ -16,7 +16,7 @@ export const authReducer = (state, action) => {
     case ActionTypes.REQUESTING_AUTH_FINISHED:
       return { ...state, isRequesting: false }
     case ActionTypes.REQUESTING_AUTH_FINISHED_WITH_ERRORS:
-      return { ...state, message: action.payload.message, error: true }
+      return { ...state, message: action.payload, error: true }
     default:
       return state
   }

@@ -9,6 +9,7 @@ export const addAuth = (user) => {
 }
 
 export const logoutAuth = () => {
+  localStorage.removeItem('token')
   return ActionUtility.createAction(ActionTypes.LOGOUT_AUTH)
 }
 
@@ -22,7 +23,7 @@ export const authRequestingFinished = () => {
 
 export const authRequestingFinishedWithErrors = (message) => {
   return ActionUtility.createAction(
-    ActionTypes.REQUESTING_LOGIN_FINISHED_WITH_ERRORS,
+    ActionTypes.REQUESTING_AUTH_FINISHED_WITH_ERRORS,
     message,
   )
 }
@@ -30,18 +31,35 @@ export const authRequestingFinishedWithErrors = (message) => {
 export const login = (email, password) => {
   return async (dispatch, getState) => {
     const enpoint = environment.auth.login
-    await _authRequestUser(dispatch, enpoint, { email, password })
+    await _authRequestUserPost(dispatch, enpoint, { email, password })
   }
 }
 
 export const register = (user) => {
   return async (dispatch, getState) => {
     const enpoint = environment.auth.register
-    await _authRequestUser(dispatch, enpoint, user)
+    await _authRequestUserPost(dispatch, enpoint, user)
   }
 }
 
-const _authRequestUser = async (dispatch, endpoint, body = false) => {
+export const verifyUserAuthenticatred = () => {
+  return async (dispatch, getState) => {
+    const enpoint = environment.auth.refresh
+    await _authRequestUserGet(dispatch, enpoint)
+  }
+}
+
+const _authRequestUserGet = async (dispatch, endpoint) => {
+  const response = await HttpHelper.getAuth(endpoint)
+  if (response.error) {
+    dispatch(authRequestingFinishedWithErrors(response.message))
+  } else {
+    localStorage.setItem('token', response.token)
+    dispatch(addAuth(response))
+  }
+}
+
+const _authRequestUserPost = async (dispatch, endpoint, body = false) => {
   dispatch(authRequesting())
   const response = await HttpHelper.post(endpoint, body)
   dispatch(authRequestingFinished())

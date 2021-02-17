@@ -1,5 +1,3 @@
-const baseUrl = process.env.REACT_APP_API_URL
-
 const RequestMethod = {
   Get: 'GET',
   Post: 'POST',
