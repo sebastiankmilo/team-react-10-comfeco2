@@ -34,7 +34,6 @@ export const Flex = ({
 }
 
 Flex.propTypes = {
-  children: PropTypes.node.isRequired,
   justify: PropTypes.oneOf([
     'start',
     'center',

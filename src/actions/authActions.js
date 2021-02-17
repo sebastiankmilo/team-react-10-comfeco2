@@ -1,43 +1,72 @@
+import environment from 'environment'
+
 import * as HttpHelper from '../helpers/HttpHelper'
 import * as ActionTypes from '../store/ActionTypes'
 import * as ActionUtility from '../utils/ActionUtility'
 
-export const addUser = (user) => {
-  return ActionUtility.createAction(ActionTypes.ADD_USER, user)
+export const addAuth = (user) => {
+  return ActionUtility.createAction(ActionTypes.ADD_AUTH, user)
 }
 
-export const logoutUser = () => {
-  return ActionUtility.createAction(ActionTypes.LOGOUT_USER)
+export const logoutAuth = () => {
+  localStorage.removeItem('token')
+  return ActionUtility.createAction(ActionTypes.LOGOUT_AUTH)
 }
 
-export const requestLogin = (values) => {
+export const authRequesting = () => {
+  return ActionUtility.createAction(ActionTypes.REQUESTING_AUTH)
+}
+
+export const authRequestingFinished = () => {
+  return ActionUtility.createAction(ActionTypes.REQUESTING_AUTH_FINISHED)
+}
+
+export const authRequestingFinishedWithErrors = (message) => {
+  return ActionUtility.createAction(
+    ActionTypes.REQUESTING_AUTH_FINISHED_WITH_ERRORS,
+    message,
+  )
+}
+
+export const login = (email, password) => {
   return async (dispatch, getState) => {
-    try {
-      const resp = await HttpHelper.fetchWithOutToken(
-        'auth/login',
-        values,
-        'POST',
-      )
-      const body = await resp.json()
-      if (!body.ok) return body
-      localStorage.setItem('token', body.token)
-      dispatch(addUser(body))
-      // TODO manejar el loading por medio de state
-    } catch (error) {
-      console.log('error:', error)
-      // TODO añadir al state el error a manejar
-    }
+    const enpoint = environment.auth.login
+    await _authRequestUserPost(dispatch, enpoint, { email, password })
   }
 }
 
-export const startChecking = async () => {
+export const register = (user) => {
   return async (dispatch, getState) => {
-    const token = localStorage.getItem('token')
-    if (!token) return null
-    try {
-      const resp = await HttpHelper.fetchWithToken('auth/renew')
-      const body = await resp.json()
-      console.log('body:', body)
-    } catch (error) {}
+    const enpoint = environment.auth.register
+    await _authRequestUserPost(dispatch, enpoint, user)
+  }
+}
+
+export const verifyUserAuthenticatred = () => {
+  return async (dispatch, getState) => {
+    const enpoint = environment.auth.refresh
+    await _authRequestUserGet(dispatch, enpoint)
+  }
+}
+
+const _authRequestUserGet = async (dispatch, endpoint) => {
+  const response = await HttpHelper.getAuth(endpoint)
+  if (response.error) {
+    dispatch(authRequestingFinishedWithErrors(response.message))
+  } else {
+    localStorage.setItem('token', response.token)
+    dispatch(addAuth(response))
+  }
+}
+
+const _authRequestUserPost = async (dispatch, endpoint, body = false) => {
+  dispatch(authRequesting())
+  const response = await HttpHelper.post(endpoint, body)
+  dispatch(authRequestingFinished())
+  if (response.error) {
+    dispatch(authRequestingFinishedWithErrors(response.message))
+  } else {
+    localStorage.setItem('token', response.token)
+    dispatch(addAuth(response))
   }
 }

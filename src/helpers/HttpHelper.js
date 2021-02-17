@@ -1,5 +1,3 @@
-const baseUrl = process.env.REACT_APP_API_URL
-
 const RequestMethod = {
   Get: 'GET',
   Post: 'POST',
@@ -9,6 +7,9 @@ const RequestMethod = {
   Head: 'HEAD',
   Patch: 'PATCH',
 }
+
+const _getBodyConfig = (body) =>
+  !!body ? { body: JSON.stringify(body) } : undefined
 
 export const get = async (endpoint, requestConfig = {}, isAuth = false) => {
   return _request(
@@ -21,17 +22,21 @@ export const get = async (endpoint, requestConfig = {}, isAuth = false) => {
   )
 }
 
+export const getAuth = async (endpoint, requestConfig = {}) => {
+  return get(endpoint, requestConfig, true)
+}
+
 export const post = async (
   endpoint,
   body,
   requestConfig = {},
   isAuth = false,
 ) => {
-  const config = body ? { body } : undefined
+  const config = _getBodyConfig(body)
   return _request(
     {
       url: endpoint,
-      method: RequestMethod.POST,
+      method: RequestMethod.Post,
     },
     {
       ...config,
@@ -41,13 +46,17 @@ export const post = async (
   )
 }
 
+export const postAuth = async (endpoint, body, requestConfig = {}) => {
+  return post(endpoint, body, requestConfig, true)
+}
+
 export const put = async (
   endpoint,
   body,
   requestConfig = {},
   isAuth = false,
 ) => {
-  const config = body ? { body } : undefined
+  const config = _getBodyConfig(body)
   return _request(
     {
       url: endpoint,
@@ -61,6 +70,10 @@ export const put = async (
   )
 }
 
+export const putAuth = async (endpoint, body, requestConfig = {}) => {
+  return put(endpoint, body, requestConfig, true)
+}
+
 export const del = async (endpoint, requestConfig = {}, isAuth = false) => {
   return _request(
     {
@@ -68,7 +81,12 @@ export const del = async (endpoint, requestConfig = {}, isAuth = false) => {
       method: RequestMethod.Delete,
     },
     requestConfig,
+    isAuth,
   )
+}
+
+export const delAuth = async (endpoint, requestConfig = {}) => {
+  return del(endpoint, requestConfig, true)
 }
 
 const _request = async (restRequest, config, isAuth) => {
@@ -98,7 +116,8 @@ const _request = async (restRequest, config, isAuth) => {
     if (!response.ok) {
       return { status: response.status, message: response.msg, error: true }
     }
-    return { ...response, error: false }
+    const { ok, ...rest } = response
+    return { ...rest, error: false }
   } catch (error) {
     // TODO: necesario conocer lo que contiene una respuesta en el caso de un error <400
     console.log(error)
@@ -107,41 +126,5 @@ const _request = async (restRequest, config, isAuth) => {
       message: error.msg || 'Error al hacer la solicitud',
       error: true,
     }
-  }
-}
-
-export const fetchWithOutToken = (endpoint, data, method = 'GET') => {
-  const url = `${baseUrl}/${endpoint}`
-  if (method === 'GET') return fetch(url)
-  else {
-    return fetch(url, {
-      method,
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-  }
-}
-
-export const fetchWithToken = (endpoint, data, method = 'GET') => {
-  const url = `${baseUrl}/${endpoint}`
-  const token = localStorage.getItem('token') || ''
-  if (method === 'GET')
-    return fetch(url, {
-      method,
-      headers: {
-        'x-token': token,
-      },
-    })
-  else {
-    return fetch(url, {
-      method,
-      headers: {
-        'Content-type': 'application/json',
-        'x-token': token,
-      },
-      body: JSON.stringify(data),
-    })
   }
 }

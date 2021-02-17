@@ -5,9 +5,23 @@ import LogoComplete from '../../../assets/img/logo-complete.svg'
 import { RouteMap } from '../../../constants/RouteMap'
 import { Flex } from '../common/Flex'
 import { HeaderActionButton } from './HeaderActionButton'
+import { useAuthReducer } from '../../../hooks'
+import * as AuthActions from '../../../actions/AuthActions'
+
 export const Header = () => {
-  const { pathname: currentPath } = useLocation()
   const history = useHistory()
+  const { pathname: currentPath } = useLocation()
+  const [{ uid }, dispatch] = useAuthReducer()
+  const logout = () => {
+    dispatch(AuthActions.logoutAuth())
+  }
+  const showInLogin =
+    currentPath === RouteMap.Home.login() ||
+    currentPath === RouteMap.Home.forgot()
+
+  const showInRegister = currentPath === RouteMap.Home.register()
+
+  const showInDashboard = !!uid
   return (
     <Navbar color="faded" light expand="md" className="header">
       <Container>
@@ -22,19 +36,22 @@ export const Header = () => {
           justify="center"
           className="w-100 justify-content-md-end ml-auto flex-row"
         >
-          {currentPath === RouteMap.Home.login() && (
+          {showInLogin && (
             <HeaderActionButton
               label="¿Aún no tienes cuenta?"
               text="Resgistrarse"
               onClick={() => history.push(RouteMap.Home.register())}
             />
           )}
-          {currentPath === RouteMap.Home.register() && (
+          {showInRegister && (
             <HeaderActionButton
               label="¿Ya tienes cuenta?"
               text="Iniciar Sesión"
               onClick={() => history.push(RouteMap.Home.login())}
             />
+          )}
+          {showInDashboard && (
+            <HeaderActionButton text="Cerrar Sesión" onClick={logout} />
           )}
         </Flex>
       </Container>
