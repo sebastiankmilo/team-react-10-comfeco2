@@ -1,0 +1,63 @@
+@import '~react-toastify/dist/ReactToastify.min.css';
+
+.Toastify__toast {
+  min-height: 0 !important;
+  border-radius: 0.25rem !important;
+  padding: 10px 10px !important;
+  font-size: 1.5rem;
+  overflow: hidden;
+  .Toastify__close-button {
+    padding: 10px 0 !important;
+  }
+  .Toastify__progress-bar {
+    height: 0.125rem !important;
+  }
+}
+
+.Toastify__toast--info {
+  background-color: #27bcfd !important;
+}
+.Toastify__toast--success {
+  background-color: #00d27a !important;
+}
+.Toastify__toast--error {
+  background-color: #e63757 !important;
+}
+.Toastify__toast--default {
+  background-color: #fff !important;
+  color: #4d5969 !important;
+}
+.Toastify__toast-body {
+  padding: 0.5rem 0 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fadeOut {
+  animation-name: fadeOut;
+}
+
+.animate {
+  animation-duration: 800ms;
+}

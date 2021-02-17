@@ -5,6 +5,7 @@ $font-size-normal: 1.6rem;
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import './layout.scss';
+@import './plugins/index.scss';
 @import './components/components.scss';
 
 body {
