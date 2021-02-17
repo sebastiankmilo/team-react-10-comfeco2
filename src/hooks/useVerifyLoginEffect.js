@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import * as AuthActions from '../actions/AuthActions'
+import * as AuthAction from '../actions/AuthAction'
 import { useAuthReducer } from './useAuthReducer'
 
 export const useVerifyLoginEffect = () => {
@@ -7,7 +7,7 @@ export const useVerifyLoginEffect = () => {
   useEffect(() => {
     const token = localStorage.getItem('token') || false
     if (!uid && !!token) {
-      dispatch(AuthActions.verifyUserAuthenticatred())
+      dispatch(AuthAction.verifyUserAuthenticatred())
     }
   }, [dispatch, uid])
 }

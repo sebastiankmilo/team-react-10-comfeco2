@@ -19,7 +19,7 @@ import Email from '../../../assets/img/email.svg'
 import { RouteMap } from '../../../constants/RouteMap'
 import { useAuthReducer } from '../../../hooks'
 import { Loader } from '../../ui/common/Loader'
-import * as AuthActions from '../../../actions/AuthActions'
+import * as AuthAction from '../../../actions/AuthAction'
 
 export const LoginForm = () => {
   const [user, setUser] = useState({ email: '', password: '' })
@@ -32,7 +32,7 @@ export const LoginForm = () => {
 
   const onSubmit = () => {
     const { email, password } = user
-    dispatch(AuthActions.login(email, password))
+    dispatch(AuthAction.login(email, password))
   }
 
   useEffect(() => {

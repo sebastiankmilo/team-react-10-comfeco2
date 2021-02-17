@@ -6,14 +6,14 @@ import { RouteMap } from '../../../constants/RouteMap'
 import { Flex } from '../common/Flex'
 import { HeaderActionButton } from './HeaderActionButton'
 import { useAuthReducer } from '../../../hooks'
-import * as AuthActions from '../../../actions/AuthActions'
+import * as AuthAction from '../../../actions/AuthAction'
 
 export const Header = () => {
   const history = useHistory()
   const { pathname: currentPath } = useLocation()
   const [{ uid }, dispatch] = useAuthReducer()
   const logout = () => {
-    dispatch(AuthActions.logoutAuth())
+    dispatch(AuthAction.logoutAuth())
   }
   const showInLogin =
     currentPath === RouteMap.Home.login() ||
