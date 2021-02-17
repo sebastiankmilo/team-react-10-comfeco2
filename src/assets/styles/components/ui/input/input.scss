@@ -1,0 +1,25 @@
+input::placeholder {
+  color: #756585 !important;
+}
+input:focus {
+  box-shadow: none !important;
+}
+.InputImg {
+  position: absolute;
+  z-index: 3;
+  width: 2.5rem;
+  top: 0.5rem;
+}
+.inputButton {
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  height: 40;
+}
+.inputText {
+  border-width: 0 0px 1.5px 0px;
+  border-color: #5d2c8f;
+  color: #a48dba;
+}
+.add-padding-icon {
+  padding-left: 4rem;
+}
