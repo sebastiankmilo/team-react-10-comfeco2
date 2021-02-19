@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from 'react'
+/**
+ * Componente
+ */
+
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+
 import {
   Card,
   Button,
@@ -10,41 +15,45 @@ import {
   FormGroup,
   Col,
 } from 'reactstrap'
-import { Link } from 'react-router-dom'
-
-import { InputText } from '../../ui/inputs/InputText'
-
-import { RouteMap } from '../../../constants/RouteMap'
-import { useAuthReducer } from '../../../hooks'
-import { Loader } from '../../ui/common/Loader'
-import * as AuthAction from '../../../actions/AuthAction'
 
 /**
- * Asset
- */
+import { RouteMap } from '../../../constants/RouteMap'
+import { Link } from 'react-router-dom'
+*/
+
+/**Componentes propios */
+import { InputText } from '../../ui/inputs/InputText'
+import { Loader } from '../../ui/common/Loader'
+
+import { useAuthReducer } from '../../../hooks'
+
+import * as AuthAction from '../../../actions/AuthAction'
+
+// *Iconos de inputs
 import Logo from '../../../assets/img/logo.svg'
 import Password from '../../../assets/img/password.svg'
 import Email from '../../../assets/img/email.svg'
 import Icon from '../../../assets/img/icon.svg'
+
 export const RegisterFrom = () => {
-  const [user, setUser] = useState({ email: '', password: '' })
+  const [user, setUser] = useState({
+    nombre: '',
+    email: '',
+    password: '',
+  })
   const [{ isRequesting, error, message }, dispatch] = useAuthReducer()
-  const { register, errors, handleSubmit } = useForm()
+  /**Manejar la información suministrada en el formulario */
+  const { register, errors, handleSubmit, watch } = useForm()
 
   const handleChange = ({ name, value }) => {
     setUser({ ...user, [name]: value })
   }
 
   const onSubmit = () => {
-    const { email, password } = user
-    dispatch(AuthAction.login(email, password))
+    dispatch(AuthAction.register(user))
   }
 
-  useEffect(() => {
-    if (error) console.log(message)
-  }, [error, message])
-
-  const { nombre, email, password, passwordConfirm } = user
+  const { nombre, email, password } = user
 
   return (
     <>
@@ -118,16 +127,15 @@ export const RegisterFrom = () => {
                   className="inputText"
                 />
                 <InputText
-                  id="password"
-                  name="password"
+                  id="passwordConfirm"
+                  name="passwordConfirm"
                   icon={Password}
                   type="password"
-                  value={password}
                   placeholder="Confirmar Contraseña"
-                  onChange={handleChange}
                   errors={errors}
                   innerRef={register({
                     required: 'Campo obligatorio',
+                    validate: (value) => value === watch('password'),
                   })}
                   className="inputText"
                 />
@@ -140,7 +148,7 @@ export const RegisterFrom = () => {
                   type="submit"
                   className="rounded-pill font-size-14 mt-5 inputButton mb-4"
                 >
-                  Iniciar sesión
+                  Registrarse
                 </Button>
               </Col>
             </Form>
