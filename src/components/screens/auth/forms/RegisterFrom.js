@@ -15,7 +15,7 @@ import {
 import { InputText } from '../../../ui/inputs/InputText'
 import { Loader } from '../../../ui/common/Loader'
 
-import { useAuthReducer } from '../../../../hooks'
+import { useAuthState, useContextDispatch } from '../../../../hooks'
 
 import * as AuthAction from '../../../../actions/AuthAction'
 
@@ -32,7 +32,8 @@ export const RegisterFrom = () => {
     password: '',
     passwordConfirm: '',
   })
-  const [{ isRequesting }, dispatch] = useAuthReducer()
+  const { isRequesting } = useAuthState()
+  const dispatch = useContextDispatch()
 
   const { register, errors, handleSubmit, watch } = useForm()
 

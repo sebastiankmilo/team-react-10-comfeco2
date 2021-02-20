@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import * as AuthAction from '../actions/AuthAction'
-import { useAuthReducer } from './useAuthReducer'
+import { useAuthState } from './useAuthState'
+import { useContextDispatch } from './useContextDispatch'
 
 export const useVerifyLoginEffect = () => {
-  const [{ uid }, dispatch] = useAuthReducer()
+  const { uid } = useAuthState()
+  const dispatch = useContextDispatch()
   useEffect(() => {
     const token = localStorage.getItem('token') || false
     if (!uid && !!token) {
