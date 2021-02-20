@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import {
   Card,
@@ -23,7 +23,7 @@ import * as AuthAction from '../../../actions/AuthAction'
 
 export const LoginForm = () => {
   const [user, setUser] = useState({ email: '', password: '' })
-  const [{ isRequesting, error, message }, dispatch] = useAuthReducer()
+  const [{ isRequesting }, dispatch] = useAuthReducer()
   const { register, errors, handleSubmit } = useForm()
 
   const handleChange = ({ name, value }) => {
@@ -34,10 +34,6 @@ export const LoginForm = () => {
     const { email, password } = user
     dispatch(AuthAction.login(email, password))
   }
-
-  useEffect(() => {
-    if (error) console.log(message)
-  }, [error, message])
 
   const { email, password } = user
 
