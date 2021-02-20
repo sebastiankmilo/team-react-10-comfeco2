@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex } from '../../ui/common/Flex'
-import { RegisterFrom } from './RegisterFrom'
+import { RegisterFrom } from './forms/RegisterFrom'
 
 export const RegisterScreen = () => {
   return (

@@ -10,9 +10,9 @@ import {
   CardTitle,
   Col,
 } from 'reactstrap'
-import { InputText } from '../../ui/inputs/InputText'
-import Logo from '../../../assets/img/logo.svg'
-import Email from '../../../assets/img/email.svg'
+import { InputText } from '../../../ui/inputs/InputText'
+import Logo from '../../../../assets/img/logo.svg'
+import Email from '../../../../assets/img/email.svg'
 
 export const ForgotForm = () => {
   const { register, errors } = useForm()

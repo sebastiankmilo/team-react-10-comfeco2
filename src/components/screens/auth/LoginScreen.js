@@ -1,8 +1,8 @@
 import React from 'react'
 import { Flex } from '../../ui/common/Flex'
-import { LoginForm } from './LoginForm'
+import { LoginForm } from './forms/LoginForm'
 import { useAuthReducer, useRedirect } from '../../../hooks'
-import { RouteMap } from 'constants/RouteMap'
+import { RouteMap } from '../../../constants/RouteMap'
 
 export const LoginScreen = () => {
   const [{ uid }] = useAuthReducer()
