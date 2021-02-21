@@ -59,6 +59,7 @@ export const verifyUserAuthenticatred = () => {
 const _authRequestUserGet = async (dispatch, endpoint) => {
   const response = await HttpHelper.getAuth(endpoint)
   if (response.error) {
+    dispatch(logoutAuth())
     dispatch(ToastsAction.addError(response.message))
   } else {
     localStorage.setItem('token', response.token)
