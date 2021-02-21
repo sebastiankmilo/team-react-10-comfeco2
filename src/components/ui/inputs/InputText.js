@@ -48,7 +48,7 @@ export const InputText = ({
 
 InputText.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
 }

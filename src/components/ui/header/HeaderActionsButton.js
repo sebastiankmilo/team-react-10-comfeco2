@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Col, Label, Row } from 'reactstrap'
 
-export const HeaderActionButton = ({ label, text, ...rest }) => (
+export const HeaderActionsButton = ({ label, text, ...rest }) => (
   <Row>
     <Col className="d-flex align-items-center">
       {label && (
@@ -25,7 +25,7 @@ export const HeaderActionButton = ({ label, text, ...rest }) => (
   </Row>
 )
 
-HeaderActionButton.propTypes = {
+HeaderActionsButton.propTypes = {
   label: PropTypes.string,
   text: PropTypes.string.isRequired,
 }

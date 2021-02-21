@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex } from '../../ui/common/Flex'
-import { ForgotForm } from './ForgotForm'
+import { ForgotForm } from './forms/ForgotForm'
 
 export const ForgotScreen = () => {
   return (

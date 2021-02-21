@@ -3,6 +3,7 @@ import environment from 'environment'
 import * as HttpHelper from '../helpers/HttpHelper'
 import * as ActionTypes from '../store/ActionTypes'
 import * as ActionUtility from '../utils/ActionUtility'
+import * as ToastsAction from './ToastsAction'
 
 export const addAuth = (user) => {
   return ActionUtility.createAction(ActionTypes.ADD_AUTH, user)
@@ -64,9 +65,10 @@ const _authRequestUserPost = async (dispatch, endpoint, body = false) => {
   const response = await HttpHelper.post(endpoint, body)
   dispatch(authRequestingFinished())
   if (response.error) {
-    dispatch(authRequestingFinishedWithErrors(response.message))
+    dispatch(ToastsAction.addError(response.message))
   } else {
     localStorage.setItem('token', response.token)
     dispatch(addAuth(response))
+    dispatch(ToastsAction.addSuccess('Ha iniciado sesión'))
   }
 }
