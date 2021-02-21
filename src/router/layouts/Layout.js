@@ -18,13 +18,13 @@ export const Layout = () => {
       <Header />
       <Content>
         <Switch>
-          <Route exact path={RouteMap.Home.login()} component={LoginScreen} />
+          <Route exact path={RouteMap.Auth.login()} component={LoginScreen} />
           <Route
             exact
-            path={RouteMap.Home.register()}
+            path={RouteMap.Auth.register()}
             component={RegisterScreen}
           />
-          <Route exact path={RouteMap.Home.forgot()} component={ForgotScreen} />
+          <Route exact path={RouteMap.Auth.forgot()} component={ForgotScreen} />
           <Route component={DashboardLayoutAuthenticated} />
         </Switch>
       </Content>

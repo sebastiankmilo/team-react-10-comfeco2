@@ -26,28 +26,28 @@ export const HeaderNavbar = () => {
       className="w-100 justify-content-md-end ml-auto flex-row"
     >
       <Switch>
-        <Route exact path={RouteMap.Home.login()}>
+        <Route exact path={RouteMap.Auth.login()}>
           <HeaderActionsButton
             label="¿Aún no tienes cuenta?"
             text="Resgistrarse"
-            onClick={redirectTo(RouteMap.Home.register())}
+            onClick={redirectTo(RouteMap.Auth.register())}
           />
         </Route>
-        <Route exact path={RouteMap.Home.forgot()}>
+        <Route exact path={RouteMap.Auth.forgot()}>
           <HeaderActionsButton
             label="¿Aún no tienes cuenta?"
             text="Resgistrarse"
-            onClick={redirectTo(RouteMap.Home.register())}
+            onClick={redirectTo(RouteMap.Auth.register())}
           />
         </Route>
-        <Route exact path={RouteMap.Home.register()}>
+        <Route exact path={RouteMap.Auth.register()}>
           <HeaderActionsButton
             label="¿Ya tienes cuenta?"
             text="Iniciar Sesión"
-            onClick={redirectTo(RouteMap.Home.login())}
+            onClick={redirectTo(RouteMap.Auth.login())}
           />
         </Route>
-        <Route path={RouteMap.Dashboard.root()}>
+        <Route path={RouteMap.Portal.root()}>
           <HeaderActionsButton text="Cerrar Sesión" onClick={logout} />
         </Route>
       </Switch>

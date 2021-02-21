@@ -12,7 +12,7 @@ export const Header = () => (
   <Navbar color="faded" light expand="md" className="header">
     <Container>
       <Flex justify="center" className="w-100 justify-content-md-start">
-        <NavbarBrand tag={Link} to={RouteMap.Home.root()}>
+        <NavbarBrand tag={Link} to={RouteMap.Portal.root()}>
           <Media src={LogoComplete} height="50" alt="Logo completo" />
         </NavbarBrand>
       </Flex>
