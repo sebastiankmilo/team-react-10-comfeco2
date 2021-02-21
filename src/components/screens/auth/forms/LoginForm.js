@@ -108,7 +108,7 @@ export const LoginForm = () => {
               </Col>
               <Col className="col text-center">
                 <Link
-                  to={RouteMap.Home.forgot()}
+                  to={RouteMap.Auth.forgot()}
                   className="font-size-18 color-purple-text mt-2 text-center"
                 >
                   ¿Olvidaste Tu Contraseña?

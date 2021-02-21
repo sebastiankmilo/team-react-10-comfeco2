@@ -1,7 +1,7 @@
 const homeRoot = '/'
 
-const homeRoutes = {
-  Home: {
+const authRoutes = {
+  Auth: {
     root: () => homeRoot,
     login: () => `${homeRoot}login`,
     forgot: () => `${homeRoot}forgot`,
@@ -9,15 +9,15 @@ const homeRoutes = {
   },
 }
 
-const dashboardRoot = `${homeRoot}dashboard`
-const dashboardRoutes = {
-  Dashboard: {
-    root: () => dashboardRoot,
-    exampleWithParams: (param = ':param') => `${dashboardRoot}/edit/${param}`,
+const portalRoot = `${homeRoot}dashboard`
+const portalRoutes = {
+  Portal: {
+    root: () => portalRoot,
+    exampleWithParams: (param = ':param') => `${portalRoot}/edit/${param}`,
   },
 }
 
 export const RouteMap = {
-  ...homeRoutes,
-  ...dashboardRoutes,
+  ...authRoutes,
+  ...portalRoutes,
 }

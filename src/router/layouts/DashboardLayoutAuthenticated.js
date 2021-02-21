@@ -7,8 +7,8 @@ import { withAuthentication } from '../../hoc/withAuthentication'
 
 const DashboardLayout = () => (
   <Switch>
-    <Route exact path={RouteMap.Dashboard.root()} component={DashboardScreen} />
-    <Redirect to={RouteMap.Home.root()} />
+    <Route exact path={RouteMap.Portal.root()} component={DashboardScreen} />
+    <Redirect to={RouteMap.Auth.root()} />
   </Switch>
 )
 

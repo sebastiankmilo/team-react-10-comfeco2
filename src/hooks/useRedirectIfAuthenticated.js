@@ -4,5 +4,5 @@ import { RouteMap } from '../constants/RouteMap'
 
 export const useRedirectIfAuthenticated = () => {
   const { authenticated } = useAuthState()
-  useRedirectWithFlag({ url: RouteMap.Dashboard.root(), flag: authenticated })
+  useRedirectWithFlag({ url: RouteMap.Portal.root(), flag: authenticated })
 }
