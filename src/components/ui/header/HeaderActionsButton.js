@@ -6,7 +6,10 @@ export const HeaderActionsButton = ({ label, text, ...rest }) => (
   <Row>
     <Col className="d-flex align-items-center">
       {label && (
-        <Label for="id-button-header-action" className="p-4 font-size-14">
+        <Label
+          for="id-button-header-action"
+          className="p-4 font-size-14 text-dark"
+        >
           {label}
         </Label>
       )}

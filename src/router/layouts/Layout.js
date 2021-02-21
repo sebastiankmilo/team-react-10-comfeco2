@@ -14,7 +14,7 @@ import { useVerifyLoginEffect } from 'hooks'
 export const Layout = () => {
   useVerifyLoginEffect()
   return (
-    <div className="app layout">
+    <div className="layout">
       <Header />
       <Content>
         <Switch>

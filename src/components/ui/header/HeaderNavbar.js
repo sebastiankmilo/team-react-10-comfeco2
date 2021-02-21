@@ -8,7 +8,7 @@ import { HeaderActionsButton } from './HeaderActionsButton'
 import { RouteMap } from '../../../constants/RouteMap'
 import * as AuthAction from '../../../actions/AuthAction'
 
-export const HeaderActions = () => {
+export const HeaderNavbar = () => {
   const history = useHistory()
   const dispatch = useContextDispatch()
 
