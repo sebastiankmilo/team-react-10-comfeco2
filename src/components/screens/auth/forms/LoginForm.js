@@ -15,14 +15,16 @@ import { InputText } from '../../../ui/inputs/InputText'
 import Password from '../../../../assets/img/password.svg'
 import Email from '../../../../assets/img/email.svg'
 import { RouteMap } from '../../../../constants/RouteMap'
-import { useAuthReducer } from '../../../../hooks'
+import { useAuthState, useContextDispatch } from '../../../../hooks'
 import { Loader } from '../../../ui/common/Loader'
 import * as AuthAction from '../../../../actions/AuthAction'
 import Logo from '../../../../assets/img/logo.svg'
 
 export const LoginForm = () => {
   const [user, setUser] = useState({ email: '', password: '' })
-  const [{ isRequesting }, dispatch] = useAuthReducer()
+  const { isRequesting } = useAuthState()
+  const dispatch = useContextDispatch()
+
   const { register, errors, handleSubmit } = useForm()
 
   const handleChange = ({ name, value }) => {
