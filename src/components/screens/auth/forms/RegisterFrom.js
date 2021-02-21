@@ -21,13 +21,13 @@ import * as AuthAction from '../../../../actions/AuthAction'
 
 // *Iconos de inputs
 import Logo from '../../../../assets/img/logo.svg'
-import Password from '../../../../assets/img/password.svg'
-import Email from '../../../../assets/img/email.svg'
-import Icon from '../../../../assets/img/icon.svg'
+import PasswordIcon from '../../../../assets/img/password.svg'
+import EmailIcon from '../../../../assets/img/email.svg'
+import NickIcon from '../../../../assets/img/icon.svg'
 
 export const RegisterFrom = () => {
   const [user, setUser] = useState({
-    nombre: '',
+    nick: '',
     email: '',
     password: '',
     passwordConfirm: '',
@@ -45,7 +45,7 @@ export const RegisterFrom = () => {
     dispatch(AuthAction.register(user))
   }
 
-  const { nombre, email, password, passwordConfirm } = user
+  const { nick, email, password, passwordConfirm } = user
 
   return (
     <>
@@ -73,12 +73,12 @@ export const RegisterFrom = () => {
           ) : (
             <Form onSubmit={handleSubmit(onSubmit)}>
               <InputText
-                id="nombre"
-                name="nombre"
-                icon={Icon}
-                type="nombre"
-                value={nombre}
-                placeholder="nombre"
+                id="nick"
+                name="nick"
+                icon={NickIcon}
+                type="nick"
+                value={nick}
+                placeholder="Nickname"
                 onChange={handleChange}
                 errors={errors}
                 innerRef={register({
@@ -89,7 +89,7 @@ export const RegisterFrom = () => {
               <InputText
                 id="email"
                 name="email"
-                icon={Email}
+                icon={EmailIcon}
                 value={email}
                 placeholder="Correo Electrónico"
                 onChange={handleChange}
@@ -106,7 +106,7 @@ export const RegisterFrom = () => {
               <InputText
                 id="password"
                 name="password"
-                icon={Password}
+                icon={PasswordIcon}
                 type="password"
                 value={password}
                 placeholder="Contraseña"
@@ -120,7 +120,7 @@ export const RegisterFrom = () => {
               <InputText
                 id="passwordConfirm"
                 name="passwordConfirm"
-                icon={Password}
+                icon={PasswordIcon}
                 type="password"
                 value={passwordConfirm}
                 placeholder="Confirmar Contraseña"

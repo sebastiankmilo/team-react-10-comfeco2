@@ -11,14 +11,15 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
+import { Loader } from '../../../ui/common/Loader'
 import { InputText } from '../../../ui/inputs/InputText'
-import Password from '../../../../assets/img/password.svg'
-import Email from '../../../../assets/img/email.svg'
 import { RouteMap } from '../../../../constants/RouteMap'
 import { useAuthState, useContextDispatch } from '../../../../hooks'
-import { Loader } from '../../../ui/common/Loader'
 import * as AuthAction from '../../../../actions/AuthAction'
+
 import Logo from '../../../../assets/img/logo.svg'
+import PasswordIcon from '../../../../assets/img/password.svg'
+import EmailIcon from '../../../../assets/img/email.svg'
 
 export const LoginForm = () => {
   const [user, setUser] = useState({ email: '', password: '' })
@@ -66,7 +67,7 @@ export const LoginForm = () => {
               <InputText
                 id="email"
                 name="email"
-                icon={Email}
+                icon={EmailIcon}
                 value={email}
                 placeholder="Correo Electrónico"
                 onChange={handleChange}
@@ -83,7 +84,7 @@ export const LoginForm = () => {
               <InputText
                 id="password"
                 name="password"
-                icon={Password}
+                icon={PasswordIcon}
                 type="password"
                 value={password}
                 placeholder="Contraseña"

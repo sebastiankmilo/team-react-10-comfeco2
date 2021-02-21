@@ -4,7 +4,7 @@ import { Container, Media, Navbar, NavbarBrand } from 'reactstrap'
 
 import { Flex } from '../common/Flex'
 import { RouteMap } from '../../../constants/RouteMap'
-import { HeaderActions } from './HeaderActions'
+import { HeaderNavbar } from './HeaderNavbar'
 
 import LogoComplete from '../../../assets/img/logo-complete.svg'
 
@@ -16,7 +16,7 @@ export const Header = () => (
           <Media src={LogoComplete} height="50" alt="Logo completo" />
         </NavbarBrand>
       </Flex>
-      <HeaderActions />
+      <HeaderNavbar />
     </Container>
   </Navbar>
 )

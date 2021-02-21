@@ -4,12 +4,12 @@ import { useAuthState } from './useAuthState'
 import { useContextDispatch } from './useContextDispatch'
 
 export const useVerifyLoginEffect = () => {
-  const { uid } = useAuthState()
+  const { authenticated } = useAuthState()
   const dispatch = useContextDispatch()
   useEffect(() => {
     const token = localStorage.getItem('token') || false
-    if (!uid && !!token) {
+    if (!authenticated && !!token) {
       dispatch(AuthAction.verifyUserAuthenticatred())
     }
-  }, [dispatch, uid])
+  }, [dispatch, authenticated])
 }
