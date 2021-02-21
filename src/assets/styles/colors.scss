@@ -16,3 +16,7 @@ $gradient-comfeco: linear-gradient(
 .color-purple-text {
   color: #a48dba;
 }
+
+.nav-link.active {
+  color: $primary !important;
+}

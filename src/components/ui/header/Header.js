@@ -1,22 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Media, Navbar, NavbarBrand } from 'reactstrap'
+import React, { useMemo, useState } from 'react'
+import { Link, useRouteMatch } from 'react-router-dom'
+import {
+  Collapse,
+  Container,
+  Media,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+} from 'reactstrap'
+import classNames from 'classnames'
 
-import { Flex } from '../common/Flex'
 import { RouteMap } from '../../../constants/RouteMap'
 import { HeaderNavbar } from './HeaderNavbar'
 
 import LogoComplete from '../../../assets/img/logo-complete.svg'
 
-export const Header = () => (
-  <Navbar color="faded" light expand="md" className="header">
-    <Container>
-      <Flex justify="center" className="w-100 justify-content-md-start">
-        <NavbarBrand tag={Link} to={RouteMap.Portal.root()}>
+export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const match = useRouteMatch(RouteMap.Auth.root())
+
+  const isMatch = useMemo(() => !!match, [match])
+
+  const toggle = () => setIsOpen(!isOpen)
+
+  return (
+    <Navbar color="faded" light expand="md" className="header">
+      <Container>
+        <NavbarBrand tag={Link} to={RouteMap.Portal.root()} className="me-auto">
           <Media src={LogoComplete} height="50" alt="Logo completo" />
         </NavbarBrand>
-      </Flex>
-      <HeaderNavbar />
-    </Container>
-  </Navbar>
-)
+        <NavbarToggler onClick={toggle} />
+        <Collapse
+          className={classNames('', {
+            'flex-grow-0': isMatch,
+          })}
+          isOpen={isOpen}
+          navbar
+        >
+          <HeaderNavbar />
+        </Collapse>
+      </Container>
+    </Navbar>
+  )
+}

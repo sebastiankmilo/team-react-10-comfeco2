@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import { Nav } from 'reactstrap'
 
-import { Flex } from '../common/Flex'
+import { RouteMap } from '../../../constants/RouteMap'
+import { HeaderNavbarMenu } from './HeaderNavbarMenu'
 import { useContextDispatch } from '../../../hooks'
 import { HeaderActionsButton } from './HeaderActionsButton'
-import { RouteMap } from '../../../constants/RouteMap'
 import * as AuthAction from '../../../actions/AuthAction'
 
 export const HeaderNavbar = () => {
@@ -19,12 +18,12 @@ export const HeaderNavbar = () => {
   }, [dispatch])
 
   return (
-    <Flex
-      tag={Nav}
-      align="center"
-      justify="center"
-      className="w-100 justify-content-md-end ml-auto flex-row"
-    >
+    <>
+      <Switch>
+        <Route path={RouteMap.Portal.root()}>
+          <HeaderNavbarMenu />
+        </Route>
+      </Switch>
       <Switch>
         <Route exact path={RouteMap.Auth.login()}>
           <HeaderActionsButton
@@ -51,6 +50,6 @@ export const HeaderNavbar = () => {
           <HeaderActionsButton text="Cerrar Sesión" onClick={logout} />
         </Route>
       </Switch>
-    </Flex>
+    </>
   )
 }

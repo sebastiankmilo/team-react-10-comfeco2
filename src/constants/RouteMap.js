@@ -1,15 +1,16 @@
 const homeRoot = '/'
 
+const authRoot = `${homeRoot}auth`
 const authRoutes = {
   Auth: {
-    root: () => homeRoot,
-    login: () => `${homeRoot}login`,
-    forgot: () => `${homeRoot}forgot`,
-    register: () => `${homeRoot}register`,
+    root: () => authRoot,
+    login: () => `${authRoot}/login`,
+    forgot: () => `${authRoot}/forgot`,
+    register: () => `${authRoot}/register`,
   },
 }
 
-const portalRoot = `${homeRoot}dashboard`
+const portalRoot = `${homeRoot}portal/`
 const portalRoutes = {
   Portal: {
     root: () => portalRoot,
