@@ -7,10 +7,10 @@ import { useAuthState } from '../hooks'
 export const withAuthentication = (OriginalComponent) => {
   const UpdatedComponent = (props) => {
     const [redirect, setRedirect] = useState(false)
-    const [redirectUrl, setRedirectUrl] = useState(RouteMap.Home.login())
-    const { uid } = useAuthState()
+    const [redirectUrl, setRedirectUrl] = useState(RouteMap.Auth.login())
+    const { authenticated } = useAuthState()
 
-    if (!uid || redirect) {
+    if (!authenticated || redirect) {
       return <Redirect to={redirectUrl} />
     }
 
