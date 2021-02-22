@@ -1,18 +1,19 @@
 import React from 'react'
 import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap'
-import Logo from '../../../assets/img/logo.svg'
 
 import { Flex } from '../../ui/common/Flex'
-import { useAuthState, useRedirectWithFlag } from '../../../hooks'
-import { RouteMap } from '../../../constants/RouteMap'
+import { useRedirectIfAuthenticated } from '../../../hooks'
+import Logo from '../../../assets/img/logo.svg'
 
 export const TermsScreen = () => {
-  const { uid } = useAuthState()
-  useRedirectWithFlag({ url: RouteMap.Dashboard.root(), flag: !!uid })
+  useRedirectIfAuthenticated()
   return (
     <Flex justify="center" align="center" className="h-100">
       <>
-        <Card className="border-0" style={{ width: '80%', minWidth: '300px' }}>
+        <Card
+          className="border-0 w-100"
+          style={{ maxWidth: '55rem', minWidth: '30rem' }}
+        >
           <CardImg
             top
             src={Logo}
@@ -32,7 +33,7 @@ export const TermsScreen = () => {
               Terminos y condiciones
             </CardTitle>
             <CardText
-              className="font-size-18 color-purple-text mt-4 text-center"
+              className="font-size-18 color-purple-text mt-4 text-justify"
               style={{
                 overflowY: 'scroll',
                 maxHeight: '45vh',
