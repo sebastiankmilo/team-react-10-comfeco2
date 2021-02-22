@@ -29,14 +29,14 @@ export const HeaderActions = () => {
         <Route exact path={RouteMap.Home.login()}>
           <HeaderActionsButton
             label="¿Aún no tienes cuenta?"
-            text="Resgistrarse"
+            text="Registrarse"
             onClick={redirectTo(RouteMap.Home.register())}
           />
         </Route>
         <Route exact path={RouteMap.Home.forgot()}>
           <HeaderActionsButton
             label="¿Aún no tienes cuenta?"
-            text="Resgistrarse"
+            text="Registrarse"
             onClick={redirectTo(RouteMap.Home.register())}
           />
         </Route>

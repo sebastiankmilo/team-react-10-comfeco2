@@ -9,6 +9,7 @@ import { DashboardLayoutAuthenticated } from './DashboardLayoutAuthenticated'
 import { RegisterScreen } from '../../components/screens/auth/RegisterScreen'
 import { ForgotScreen } from '../../components/screens/auth/ForgotScreen'
 import { LoginScreen } from '../../components/screens/auth/LoginScreen'
+import { TermsScreen } from '../../components/screens/auth/TermsScreen'
 import { useVerifyLoginEffect } from 'hooks'
 
 export const Layout = () => {
@@ -19,6 +20,7 @@ export const Layout = () => {
       <Content>
         <Switch>
           <Route exact path={RouteMap.Home.login()} component={LoginScreen} />
+          <Route exact path={RouteMap.Home.terms()} component={TermsScreen} />
           <Route
             exact
             path={RouteMap.Home.register()}

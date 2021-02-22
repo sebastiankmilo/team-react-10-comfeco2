@@ -7,6 +7,7 @@ import {
   CardImg,
   CardBody,
   Form,
+  FormText,
   CardTitle,
   Col,
 } from 'reactstrap'
@@ -24,6 +25,7 @@ import Logo from '../../../../assets/img/logo.svg'
 import Password from '../../../../assets/img/password.svg'
 import Email from '../../../../assets/img/email.svg'
 import Icon from '../../../../assets/img/icon.svg'
+import { Link } from 'react-router-dom'
 
 export const RegisterFrom = () => {
   const [user, setUser] = useState({
@@ -142,6 +144,13 @@ export const RegisterFrom = () => {
                   Registrarse
                 </Button>
               </Col>
+              <FormText color="muted">
+                Al registrarte, estas aceptando los{' '}
+                <Link to={'/terms'} target="_blank">
+                  Términos y condiciones
+                </Link>
+                , y la Política de privacidad y protección de datos de COMFECO
+              </FormText>
             </Form>
           )}
         </CardBody>

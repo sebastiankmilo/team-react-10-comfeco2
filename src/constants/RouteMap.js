@@ -6,6 +6,7 @@ const homeRoutes = {
     login: () => `${homeRoot}login`,
     forgot: () => `${homeRoot}forgot`,
     register: () => `${homeRoot}register`,
+    terms: () => `${homeRoot}terms`,
   },
 }
 
