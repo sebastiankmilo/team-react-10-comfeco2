@@ -12,7 +12,7 @@ import { Flex } from '../common/Flex'
 
 export const HeaderProfileDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const { nick = 'Ricardo' } = useAuthState()
+  const { nick = 'Desconocido', avatar } = useAuthState()
 
   const dispatch = useContextDispatch()
 
@@ -27,23 +27,13 @@ export const HeaderProfileDropdown = () => {
         tag={DropdownToggle}
         align="center"
         justify="between"
-        style={{
-          minWidth: 150,
-          height: 40,
-          borderRadius: '28.1998px 5px 5px 28.1998px',
-          paddingLeft: 4,
-          paddingRight: 8,
-        }}
+        className="bg-muted header-dropdown-profile"
         caret
       >
-        <div
-          className="rounded-circle d-inline-block"
-          style={{
-            height: 32,
-            width: 32,
-            backgroundColor: '#6D6D6D',
-            marginRight: 5,
-          }}
+        <img
+          className="rounded-circle img-fluid header-dropdown-profile-avatar"
+          src={avatar}
+          alt={nick}
         />
         {nick}
       </Flex>

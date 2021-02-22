@@ -10,7 +10,7 @@ import { ContentCreatorsScreen } from '../../components/screens/content-creators
 
 const DashboardLayout = () => (
   <Switch>
-    <Route exact path={RouteMap.Portal.root()} component={PortalScreen} />
+    <Route exact path={RouteMap.Portal.home()} component={PortalScreen} />
     <Route
       exact
       path={RouteMap.Portal.workshops()}
@@ -26,7 +26,7 @@ const DashboardLayout = () => (
       path={RouteMap.Portal.contentCreators()}
       component={ContentCreatorsScreen}
     />
-    <Redirect to={RouteMap.Auth.root()} />
+    <Redirect to={RouteMap.Portal.home()} />
   </Switch>
 )
 

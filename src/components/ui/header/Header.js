@@ -27,7 +27,7 @@ export const Header = () => {
   return (
     <Navbar color="faded" light expand="md" className="header">
       <Container>
-        <NavbarBrand tag={Link} to={RouteMap.Portal.root()} className="me-auto">
+        <NavbarBrand tag={Link} to={RouteMap.Portal.home()} className="me-auto">
           <Media src={LogoComplete} height="50" alt="Logo completo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />

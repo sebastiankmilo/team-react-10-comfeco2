@@ -15,7 +15,7 @@ export const HeaderNavbarMenu = () => {
         justify="around"
         navbar
       >
-        <HeaderNavbarItem to={RouteMap.Portal.root()}>Inicio</HeaderNavbarItem>
+        <HeaderNavbarItem to={RouteMap.Portal.home()}>Inicio</HeaderNavbarItem>
         <HeaderNavbarItem to={RouteMap.Portal.comunities()}>
           Comunidades
         </HeaderNavbarItem>

@@ -3,3 +3,20 @@
   border-image-slice: 1;
   border-image-source: $gradient-comfeco;
 }
+
+.header-dropdown-profile {
+  min-width: 150px;
+  height: 40px;
+  border-radius: 28.1998px 5px 5px 28.1998px;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+
+.header-dropdown-profile-avatar {
+  height: 32px;
+  width: 32px;
+  background-color: #6d6d6d;
+  margin-right: 5px;
+  object-fit: fit;
+  border: 1px solid #000;
+}
