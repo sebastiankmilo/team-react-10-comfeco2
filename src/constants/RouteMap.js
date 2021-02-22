@@ -4,16 +4,19 @@ const authRoot = `${homeRoot}auth`
 const authRoutes = {
   Auth: {
     root: () => authRoot,
-    login: () => `${authRoot}/login`,
-    forgot: () => `${authRoot}/forgot`,
-    register: () => `${authRoot}/register`,
+    login: () => `${authRoot}/iniciar-sesion`,
+    forgot: () => `${authRoot}/recuperar-contrasena`,
+    register: () => `${authRoot}/registro`,
   },
 }
 
-const portalRoot = `${homeRoot}portal/`
+const portalRoot = `${homeRoot}portal`
 const portalRoutes = {
   Portal: {
     root: () => portalRoot,
+    comunities: () => `${portalRoot}/comunidades`,
+    workshops: () => `${portalRoot}/talleres`,
+    contentCreators: () => `${portalRoot}/creadores-contenido`,
     exampleWithParams: (param = ':param') => `${portalRoot}/edit/${param}`,
   },
 }

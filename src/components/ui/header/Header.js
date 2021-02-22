@@ -20,7 +20,7 @@ export const Header = () => {
 
   const match = useRouteMatch(RouteMap.Auth.root())
 
-  const isMatch = useMemo(() => !!match, [match])
+  const isMatchWithAuthPath = useMemo(() => !!match, [match])
 
   const toggle = () => setIsOpen(!isOpen)
 
@@ -33,7 +33,7 @@ export const Header = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse
           className={classNames('', {
-            'flex-grow-0': isMatch,
+            'flex-grow-0': isMatchWithAuthPath,
           })}
           isOpen={isOpen}
           navbar

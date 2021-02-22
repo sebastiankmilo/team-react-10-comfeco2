@@ -75,6 +75,7 @@ const _authRequestUserPost = async (dispatch, endpoint, body = false) => {
     dispatch(ToastsAction.addError(response.message))
   } else {
     localStorage.setItem('token', response.token)
+    console.log('PRUEBA', response)
     dispatch(addAuth(_createUser(response)))
 
     dispatch(ToastsAction.addSuccess('Ha iniciado sesión'))

@@ -1,21 +1,14 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
 
 import { RouteMap } from '../../../constants/RouteMap'
 import { HeaderNavbarMenu } from './HeaderNavbarMenu'
-import { useContextDispatch } from '../../../hooks'
 import { HeaderActionsButton } from './HeaderActionsButton'
-import * as AuthAction from '../../../actions/AuthAction'
 
 export const HeaderNavbar = () => {
   const history = useHistory()
-  const dispatch = useContextDispatch()
 
   const redirectTo = (url) => () => history.push(url)
-
-  const logout = useCallback(() => {
-    dispatch(AuthAction.logoutAuth())
-  }, [dispatch])
 
   return (
     <>
@@ -45,9 +38,6 @@ export const HeaderNavbar = () => {
             text="Iniciar Sesión"
             onClick={redirectTo(RouteMap.Auth.login())}
           />
-        </Route>
-        <Route path={RouteMap.Portal.root()}>
-          <HeaderActionsButton text="Cerrar Sesión" onClick={logout} />
         </Route>
       </Switch>
     </>
