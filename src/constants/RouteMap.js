@@ -6,6 +6,7 @@ const authRoutes = {
     login: () => `${homeRoot}login`,
     forgot: () => `${homeRoot}forgot`,
     register: () => `${homeRoot}register`,
+    terms: () => `${homeRoot}terminos-condiciones`,
   },
 }
 
