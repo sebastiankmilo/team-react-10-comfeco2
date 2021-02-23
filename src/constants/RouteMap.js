@@ -7,6 +7,7 @@ const authRoutes = {
     login: () => `${authRoot}/iniciar-sesion`,
     forgot: () => `${authRoot}/recuperar-contrasena`,
     register: () => `${authRoot}/registro`,
+    terms: () => `${authRoot}terminos-condiciones`,
   },
 }
 
