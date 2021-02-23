@@ -1,23 +1,28 @@
 const homeRoot = '/'
 
-const homeRoutes = {
-  Home: {
-    root: () => homeRoot,
-    login: () => `${homeRoot}login`,
-    forgot: () => `${homeRoot}forgot`,
-    register: () => `${homeRoot}register`,
+const authRoot = `${homeRoot}auth`
+const authRoutes = {
+  Auth: {
+    root: () => authRoot,
+    login: () => `${authRoot}/iniciar-sesion`,
+    forgot: () => `${authRoot}/recuperar-contrasena`,
+    register: () => `${authRoot}/registro`,
   },
 }
 
-const dashboardRoot = `${homeRoot}dashboard`
-const dashboardRoutes = {
-  Dashboard: {
-    root: () => dashboardRoot,
-    exampleWithParams: (param = ':param') => `${dashboardRoot}/edit/${param}`,
+const portalRoot = `${homeRoot}portal`
+const portalRoutes = {
+  Portal: {
+    root: () => portalRoot,
+    comunities: () => `${portalRoot}/comunidades`,
+    home: () => `${portalRoot}/inicio`,
+    workshops: () => `${portalRoot}/talleres`,
+    contentCreators: () => `${portalRoot}/creadores-contenido`,
+    exampleWithParams: (param = ':param') => `${portalRoot}/edit/${param}`,
   },
 }
 
 export const RouteMap = {
-  ...homeRoutes,
-  ...dashboardRoutes,
+  ...authRoutes,
+  ...portalRoutes,
 }

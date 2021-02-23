@@ -1,34 +1,45 @@
-import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import { Container, Media, Nav, Navbar, NavbarBrand } from 'reactstrap'
-import LogoComplete from '../../../assets/img/logo-complete.svg'
+import React, { useMemo, useState } from 'react'
+import { Link, useRouteMatch } from 'react-router-dom'
+import {
+  Collapse,
+  Container,
+  Media,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+} from 'reactstrap'
+import classNames from 'classnames'
+
 import { RouteMap } from '../../../constants/RouteMap'
-import { HeaderActionButton } from './HeaderActionButton'
+import { HeaderNavbar } from './HeaderNavbar'
+
+import LogoComplete from '../../../assets/img/logo-complete.svg'
+
 export const Header = () => {
-  const { pathname: currentPath } = useLocation()
-  const history = useHistory()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const match = useRouteMatch(RouteMap.Auth.root())
+
+  const isMatchWithAuthPath = useMemo(() => !!match, [match])
+
+  const toggle = () => setIsOpen(!isOpen)
+
   return (
-    <Navbar color="faded" light expand="md" className="boder-bottom-line">
+    <Navbar color="faded" light expand="md" className="header">
       <Container>
-        <NavbarBrand href="/">
+        <NavbarBrand tag={Link} to={RouteMap.Portal.home()} className="me-auto">
           <Media src={LogoComplete} height="50" alt="Logo completo" />
         </NavbarBrand>
-        <Nav className="ml-auto flex-row align-items-center">
-          {currentPath === RouteMap.Home.login() && (
-            <HeaderActionButton
-              label="¿Aún no tienes cuenta?"
-              text="Resgistrarse"
-              onClick={() => history.push(RouteMap.Home.register())}
-            />
-          )}
-          {currentPath === RouteMap.Home.register() && (
-            <HeaderActionButton
-              label="¿Ya tienes cuenta?"
-              text="Iniciar Sesión"
-              onClick={() => history.push(RouteMap.Home.login())}
-            />
-          )}
-        </Nav>
+        <NavbarToggler onClick={toggle} />
+        <Collapse
+          className={classNames('', {
+            'flex-grow-0': isMatchWithAuthPath,
+          })}
+          isOpen={isOpen}
+          navbar
+        >
+          <HeaderNavbar />
+        </Collapse>
       </Container>
     </Navbar>
   )

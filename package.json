@@ -8,35 +8,51 @@
       "post-commit": "git update-index -g"
     }
   },
+  "scripts": {
+    "start": "cross-env CLIENT_ENV=development craco start",
+    "prod": "cross-env CLIENT_ENV=production craco start",
+    "build": "cross-env CLIENT_ENV=production craco start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.0-beta1",
+    "classnames": "^2.2.6",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-combine-reducers": "^1.1.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^6.15.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-toastify": "^7.0.3",
     "reactstrap": "^8.9.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.16",
+    "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.9",
+    "@types/classnames": "^2.2.11",
+    "@types/history": "^4.7.8",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-router-dom": "^5.1.7",
+    "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^4.2.5",
     "prettier": "1.17.1",
-    "pretty-quick": "^2.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "pretty-quick": "^2.0.1",
+    "typescript": "^4.1.5"
   },
   "eslintConfig": {
     "extends": [

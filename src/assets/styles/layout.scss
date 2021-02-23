@@ -1,19 +1,29 @@
-.header-layout {
+html,
+body,
+#root,
+.layout {
+  height: 100%;
+}
+
+.layout {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template:
+    'header' 1fr
+    'content' 8fr
+    'footer' 1fr;
+}
+
+.header {
   grid-area: header;
 }
 
-.content-layout {
-  grid-area: main;
-}
-
-.footer-layout {
+.footer {
   grid-area: footer;
+  grid-template-rows: auto;
+  height: 1fr;
 }
 
-.grid-container {
-  display: grid;
-  grid-template:
-    'header' auto
-    'main' 4fr
-    'footer' 1fr;
+.content {
+  grid-area: content;
 }

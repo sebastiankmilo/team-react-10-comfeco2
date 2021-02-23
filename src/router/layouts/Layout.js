@@ -6,25 +6,29 @@ import { Header } from '../../components/ui/header/Header'
 import { Footer } from '../../components/ui/footer/Footer'
 import { Content } from '../../components/ui/content/Content'
 import { DashboardLayoutAuthenticated } from './DashboardLayoutAuthenticated'
+import { RegisterScreen } from '../../components/screens/auth/RegisterScreen'
+import { ForgotScreen } from '../../components/screens/auth/ForgotScreen'
+import { LoginScreen } from '../../components/screens/auth/LoginScreen'
+import { useVerifyLoginEffect } from 'hooks'
 
-export const Layout = () => (
-  <>
-    <Header />
-    <Content>
-      <Switch>
-        <Route
-          exact
-          path={RouteMap.Home.login()}
-          component={() => <h1>Login</h1>}
-        />
-        <Route
-          exact
-          path={RouteMap.Home.register()}
-          component={() => <h1>register</h1>}
-        />
-        <Route component={DashboardLayoutAuthenticated} />
-      </Switch>
-    </Content>
-    <Footer />
-  </>
-)
+export const Layout = () => {
+  useVerifyLoginEffect()
+  return (
+    <div className="layout">
+      <Header />
+      <Content>
+        <Switch>
+          <Route exact path={RouteMap.Auth.login()} component={LoginScreen} />
+          <Route
+            exact
+            path={RouteMap.Auth.register()}
+            component={RegisterScreen}
+          />
+          <Route exact path={RouteMap.Auth.forgot()} component={ForgotScreen} />
+          <Route component={DashboardLayoutAuthenticated} />
+        </Switch>
+      </Content>
+      <Footer />
+    </div>
+  )
+}

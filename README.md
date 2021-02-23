@@ -2,10 +2,9 @@
 
 Repositorio para competencia en comfeco
 
-## Integrantes: 
+## Integrantes:
 
-- Alan web ? [AlanWeb93](https://github.com/AlanWeb93)
+- Cesar Pérez [Cesaraugp](https://github.com/Cesaraugp)
 - Edgar Olivar [The3dgar](https://github.com/The3dgar)
 - Ricardo Morataya [ItsRicmor](https://github.com/ItsRicmor)
-- Santiago Chacón [HOCKNAS](https://github.com/HOCKNAS)
-- Sebastian Cruz  [sebastiankmilo](https://github.com/sebastiankmilo)
+- Sebastian Cruz [sebastiankmilo](https://github.com/sebastiankmilo)
