@@ -24,6 +24,6 @@ const portalRoutes = {
 }
 
 export const RouteMap = {
-  ...authRoutes,
   ...portalRoutes,
+  ...authRoutes,
 }
